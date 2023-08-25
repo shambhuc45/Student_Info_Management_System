@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Student</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <a th:href="@{/student/new}" title="Add student" class="btn btn-primary">ADD STUDENT</a>
+            <div class="row">
+                <h1>List of Student</h1>
+                 
+            </div>
+        <table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date of Birth</th>
+       <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each ="student :${students}">
+      <th scope="row" th:text="${student.id}" ></th>
+      <td th:text="${student.name}"></td>
+      <td th:text="${student.age}"></td>
+      <td th:text="${student.email}"></td>
+      <td th:text="${student.dob}"></td>
+      <td>
+           <a  title="Edit this tutorial"
+            ><i class="bi bi-pencil-square"></i></a>
+           
+          <a th:href="@{'/student/delete/' + ${student.id}}" th:tutorialTitle="${student.name}" title="Delete this student" class="btn btn-danger">Delete</a>
+           <a th:href="@{'/student/edit/' + ${student.id}}" th:tutorialTitle="${student.name}" title="Update this student" class="btn btn-info">Update</a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+            </div>
+    </body>
+</html>
